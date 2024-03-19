@@ -122,12 +122,12 @@ function IssueCard({
 
             {
               image && (
-                <div className='flex mt-4 items-center justify-center w-full h-full'>
+                <div className='flex mt-4 items-center justify-start w-full h-full'>
                   <Image
                     src={image}
                     alt='issue_image'
-                    width={800}
-                    height={800}
+                    width={400}
+                    height={400}
                     className='rounded-lg object-cover'
                   />
                 </div>
@@ -146,20 +146,24 @@ function IssueCard({
                     <span className='text-small text-gray-1'>{commentCount}</span>
                   </Link>
                 </div>
-                <div className="mr-10 flex items-center gap-4">
-                  <p className="text-x-small-semibold md:text-small-regular text-light-1">Progress Level : </p>
-                  <div className="flex flex-col justify-center items-center gap-2">
-                    <Progress value={phasevalue} className="w-20 md:w-32 bg-red-200" />
-                    {phase !== 'resolved' &&
-                      <p className="text-x-small-semibold md:text-small-regular text-light-1">{phase.toUpperCase()} level</p>
-                    }
+                <div className="mt-4 flex  items-center gap-4">
+                  <div className="flex items-center gap-4 md:flex-row">
+                    <p className="text-small-regular text-light-1 ">Progress Level : </p>
+                    <div className="flex flex-col justify-center items-center gap-2">
+                      <Progress value={phasevalue} className="w-20 md:w-32 bg-red-200" />
+                      {phase !== 'resolved' &&
+                        <p className="text-small-regular text-light-1">{phase.toUpperCase()} LEVEL</p>
+                      }
+                    </div>
                   </div>
+
                   {phase === 'resolved' ? (
                     <div>
                       <div className="flex  items-center gap-2">
-                        <CheckCircle className="text-green-200" size={20}/>
-                        <p className='text-x-small-semibold md:text-small-regular text-white'>Resolved on</p>
-                        <span className='text-x-small-semibold md:text-small-regular text-gray-1'>{formatDateString(resolvedDate ?? '')}</span>
+                        <CheckCircle className="text-green-200" size={20} />
+                        <p className=' md:hidden text-small-regular text-white'>Resolved</p>
+                        <p className='hidden md:block text-small-regular text-white'>Resolved on</p>
+                        <span className='hidden md:block text-small-regular text-gray-1'>{formatDateString(resolvedDate ?? '')}</span>
                       </div>
 
                     </div>
@@ -170,7 +174,7 @@ function IssueCard({
                         <ShieldAlert className="text-yellow-200" />
                         <p className='text-subtle-medium text-white'>Pending</p>
 
-                      </div>
+                  </div>
                       {
                         isAdmin && (
                           <div className="flex gap-4 items-center">
@@ -236,16 +240,16 @@ function IssueCard({
           <span className="ml-2 text-subtle-medium ">{community.name}</span>
         </Link>
       )}
-      <div className="flex justify-between mb-[-30px]">
+      <div className="justify-end flex md:justify-between mb-[-20px]">
 
-        <div className="hidden md:flex my-2 justify-between   left-2">
+        <div className="hidden md:flex my-2 justify-between left-2">
           <div className="">
             <span className="text-subtle-medium text-gray-1">Application no.: </span>
             <span className="text-subtle-medium text-gray-1">{id}</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-2 ">
+        <div className="flex ml-10 items-center gap-2 ">
           <MapPinned size={15} className="text-gray-1" />
           <p className='text-subtle-medium text-gray-1'>{location}</p>
         </div>

@@ -364,3 +364,15 @@ export async function deleteCommunity(communityId: string) {
     throw error;
   }
 }
+
+
+export async function suggestCommunities(
+  userId: string){
+    try {
+      const user = await User.findOne({ id: userId });
+      const suggestesCommunities = await Community.find({ city: user.city, state: user.state });
+      return suggestesCommunities;
+    } catch (error) {
+      console.log(error)
+    }
+  }
