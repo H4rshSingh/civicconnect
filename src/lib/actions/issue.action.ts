@@ -264,7 +264,7 @@ export async function updateIssuePhase(issueId: string) {
         issue.phase = newPhase;
         await issue.save();
         await User.findByIdAndUpdate(issue.reporter, {
-            $push: { notification: { text: `Your issue has been transfered to ${newPhase} level.`, issueId: issue._id } },
+            $push: { notification: { text: `Your issue has been transfered to ${newPhase} administrative.`, issueId: issue._id } },
         });
         currentAdmin.issuesHavetoResolve.pull(issue._id);
         await currentAdmin.save();
@@ -290,7 +290,7 @@ export async function resolveIssue(issueId: string) {
             await issue.save();
         }
         await User.findByIdAndUpdate(issue.reporter, {
-            $push: { notification: { text: `Your issue has been resolved by ${issue.assignedAdmin}`, issueId: issue._id } },
+            $push: { notification: { text: `Your issue has been resolved by ${issue.phase} administrative.`, issueId: issue._id } },
         });
         return issue.phase;
     }
