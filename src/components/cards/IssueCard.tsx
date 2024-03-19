@@ -240,7 +240,7 @@ function IssueCard({
           <span className="ml-2 text-subtle-medium ">{community.name}</span>
         </Link>
       )}
-      <div className="justify-end flex md:justify-between mb-[-20px]">
+      <div className="justify-end flex md:justify-between">
 
         <div className="hidden md:flex my-2 justify-between left-2">
           <div className="">
