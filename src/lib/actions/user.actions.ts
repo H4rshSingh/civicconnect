@@ -110,7 +110,8 @@ export async function fetchUserPosts(userId: string) {
           },
         ],
       });
-      console.log(issues)
+      // console.log(issues)
+      
     return issues;
   } catch (error: any) {
     console.log(`Failed to fetch user posts: ${error.message}`);
@@ -188,7 +189,7 @@ export async function getActivity(userId: string) {
       return acc.concat(userIssue.comments);
     }, []);
 
-    console.log('userIssuesIds', userIssuesIds)
+    // console.log('userIssuesIds', userIssuesIds)
 
     // const replies = await Issue.find({
     //   comments: { $in: userIssuesIds },
@@ -212,7 +213,7 @@ export async function getActivity(userId: string) {
 export async function getNotification(userId: string) {
   try {
     connectToDB();
-    console.log('userId', userId)
+    // console.log('userId', userId)
     const notification = await User.findOne({ _id: userId })
       .populate({
         path: "notification",

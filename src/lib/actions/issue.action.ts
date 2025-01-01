@@ -102,7 +102,8 @@ export async function fetchIssues(pageNumber = 1, pageSize = 20) {
 export async function deleteIssue(id: string, path: string): Promise<void> {
     try {
         connectToDB();
-
+        console.log('id', id)
+        await Issue.findByIdAndDelete(id);
         revalidatePath(path);
     } catch (error: any) {
         throw new Error(`Failed to delete issue: ${error.message}`);

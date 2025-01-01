@@ -44,6 +44,7 @@ interface Props {
   image?: string;
   isAdmin?: boolean;
   adminType?: string;
+  userInfo?: any;
 }
 
 function IssueCard({
@@ -63,7 +64,8 @@ function IssueCard({
   commentCount,
   image,
   isAdmin,
-  adminType
+  adminType,
+  userInfo
 }: Props) {
   // const router = useRouter();
   // const handlePhaseChange = async() => {
@@ -85,6 +87,8 @@ function IssueCard({
   else if (phase === 'resolved') {
     phasevalue = 100;
   }
+
+  console.log({image})
   return (
     <article
       className="flex w-full relative flex-col rounded-xl bg-dark-2 p-7">

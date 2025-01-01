@@ -17,9 +17,9 @@ async function Home({
   if (!user) return null;
 
   const userInfo = await fetchUser(user.id);
-  console.log(userInfo)
+  // console.log(userInfo)
   if(userInfo?.isAdmin) redirect("/admin");
-  console.log(userInfo?.isAdmin)
+  // console.log(userInfo?.isAdmin)
   if (!userInfo?.onboarded) redirect("/onboarding");
 
   const result = await fetchIssues(

@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 async function Page({ params }: { params: { id: string } }) {
     const communityId = params.id;
-    console.log(communityId)
+    // console.log(communityId)
 
     const user = await currentUser();
     if (!user) return null;

@@ -18,10 +18,16 @@ async function Page({ params }: { params: { id: string } }) {
   const userInfo = await fetchUser(params.id);
   if (!userInfo?.onboarded) redirect("/onboarding")
 
+  const currentUserImage = userInfo?.image;
+  console.log({currentUserImage});
+
   const userIssues = await fetchUserPosts(userInfo?.id)
   const resolvedIssues = userIssues?.issues.filter((issue: any) => issue.phase === 'resolved');
   const pendingIssues = userIssues?.issues.filter((issue: any) => issue.phase !== 'resolved');
-  console.log(resolvedIssues, pendingIssues, 'resolved and pending issues')
+  // console.log(resolvedIssues, pendingIssues, 'resolved and pending issues')
+
+  // console.log('userIssues', resolvedIssues)
+  
   return (
     <section>
       <ProfileHeader
@@ -58,8 +64,9 @@ async function Page({ params }: { params: { id: string } }) {
           <TabsContent value='issues' className='w-full text-light-1'>
             {/* @ts-ignore */}
             <IssuesTab
-              currentUserId={user.id}
+              currentUserId={userInfo.id}
               accountId={userInfo._id}
+              userId = {user.id}
               accountType='User'
             />
           </TabsContent>
@@ -69,6 +76,7 @@ async function Page({ params }: { params: { id: string } }) {
               <IssueCard
                 key={issue._id}
                 id={issue._id}
+                userInfo={userInfo}
                 currentUserId={user.id}
                 title={issue.title}
                 description={issue.description}
@@ -76,7 +84,8 @@ async function Page({ params }: { params: { id: string } }) {
                 phase={issue.phase}
                 location={issue.location.toString()}
                 voteCount={issue.voteCount}
-                reporter={issue.reporter}
+                // reporter={issue.reporter}
+                reporter={{ name: userInfo.name, image: userInfo.image, id: pendingIssues.id, username: userInfo.username }}
                 community={issue.community}
                 resolvedDate={issue.resolutionDate}
                 comments={issue.comments}
@@ -105,7 +114,7 @@ async function Page({ params }: { params: { id: string } }) {
                 phase={issue.phase}
                 location={issue.location.toString()}
                 voteCount={issue.voteCount}
-                reporter={{ name: issue.name, image: resolvedIssues.image, id: resolvedIssues.id, username: resolvedIssues.username }}
+                reporter={{ name: userInfo.name, image: userInfo.image, id: resolvedIssues.id, username: userInfo.username }}
                 community={issue.community}
                 resolvedDate={issue.resolutionDate}
                 comments={issue.comments}

@@ -50,7 +50,7 @@ function PostIssue({ userId, location ,communityId}: Props) {
     });
 
     const onSubmit = async (values: z.infer<typeof IssueValidation>) => {
-        console.log(values.image)
+        // console.log(values.image)
         await createIssue({
             title: values.title,
             description: values.description,

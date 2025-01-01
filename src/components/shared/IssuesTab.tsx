@@ -53,9 +53,13 @@ interface Props {
   accountId: string;
   accountType: string;
   resolvedIssues?: boolean
+  userId: string
 }
 
-async function IssuesTab({ currentUserId, accountId, accountType , resolvedIssues,}: Props) {
+async function IssuesTab({ currentUserId, accountId, accountType , resolvedIssues, userId}: Props) {
+  console.log({accountType})
+  console.log({accountId})
+  console.log({currentUserId})
   const user = await currentUser();
   if (!user) return null;
 
@@ -78,7 +82,7 @@ if(accountType === "Community" ) {
           <IssueCard
             key={issue._id}
             id={issue._id}
-            currentUserId={currentUserId}
+            currentUserId={userId}
             title={issue.title}
             description={issue.description}
             reportDate={issue.reportDate}

@@ -25,7 +25,7 @@ const RightSidebar = async () => {
                 height={40}
                 className='w-10 h-10 rounded-full'
               />
-              <div className='gap-6 flex items-center'>
+              <div className='gap-6 flex items-center justify-between w-full'>
                 <div className='flex flex-col'>
                   <h4 className='text-heading5-medium text-light-1'>{community.name} </h4>
                   <span className='text-gray-1 text-small-regular'>@{community.username}</span>

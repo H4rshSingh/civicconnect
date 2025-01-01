@@ -24,6 +24,8 @@ function DeleteIssue({
   const pathname = usePathname();
   const router = useRouter();
 
+  console.log(currentUserId, reporterId);
+
   if (currentUserId !== reporterId || pathname === "/"){
     return null;
   };
@@ -31,7 +33,7 @@ function DeleteIssue({
   return (
     <div className="" onClick={async () => {
       await deleteIssue(JSON.parse(issueId), pathname);
-      router.push("/");
+      // router.push("/");
     }}>
       <Trash2  className="text-red-400 cursor-pointer hover:text-red-500" />
     </div>
