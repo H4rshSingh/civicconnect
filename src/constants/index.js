@@ -37,13 +37,13 @@ export const adminSidebarLinks =[
     route: "/admin",
     label: "Assigned Issue",
   },
-  {
-    route: "/search",
-    label: "Search",
-  },
+  // {
+  //   route: "/search",
+  //   label: "Search",
+  // },
   {
     route: "/admin/issues",
-    label: "All Issues",
+    label: "Issues",
   },
   {
     route: "/admin/pending-issues",
@@ -53,10 +53,10 @@ export const adminSidebarLinks =[
     route: "/admin/resolved-issues",
     label: "Resolved Issues",
   },
-  {
-    route: "/communities",
-    label: "Communities",
-  },
+  // {
+  //   route: "/communities",
+  //   label: "Communities",
+  // },
 ];
 
 

@@ -15,7 +15,7 @@ async function Page({ params }: { params: { id: string } }) {
     // const issue = await fetchIssueById(params.id);
     try {
         const resolved = await resolveIssue(params.id);
-        redirect('/');  
+        redirect('/resolved-issues');  
     } catch (error) {
         redirect('/');  
     }

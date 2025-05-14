@@ -53,9 +53,9 @@ export async function createIssue({
             await Community.findByIdAndUpdate(communityIdObject, {
                 $push: { issues: createdIssue._id },
             });
-            createdIssue.assignedAdmin = admins._id;
-            createdIssue.phase = 'municipal';
         }
+        createdIssue.assignedAdmin = admins._id;
+        createdIssue.phase = 'municipal';
         await createdIssue.save();
 
         console.log(createdIssue)
@@ -227,13 +227,16 @@ updateIssuePhaseByDefault();
 
 export async function updateIssuePhase(issueId: string) {
     try {
+        console.log('In issueId', issueId)
         connectToDB();
         const issue = await Issue.findById(issueId);
         if (!issue) {
             console.log('Issue not found')
             return;
         }
+        console.log('issue', issue)
         const currentAdmin = issue.assignedAdmin._id;
+        console.log('currentAdmin', currentAdmin)
         const districtAdmin = await User.findOne({ isAdmin: true, adminType: 'district' });
         const stateAdmin = await User.findOne({ isAdmin: true, adminType: 'state' });
         const nationalAdmin = await User.findOne({ isAdmin: true, adminType: 'national' });
@@ -360,7 +363,7 @@ export async function fetchAllResolvedIssue() {
 export async function fetchAllPendingIssue() {
     connectToDB();
     try {
-        const issues = await Issue.find({ phase: { $in : ['municipal', 'district', 'state', 'national']}  })
+        const issues = await Issue.find({ phase: { $in: ['municipal', 'district', 'state', 'national'] } })
             .sort({ reportDate: 'desc' })
             .populate({ path: 'reporter', model: User, select: '_id id name issue image username' })
             .populate({ path: 'community', model: Community, select: 'id, name, image' })

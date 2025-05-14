@@ -14,8 +14,8 @@ import { ThemeProvider } from "@/providers/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Civic Connect",
-  description: "Civic Connect is a platform for civic engagement.",
+  title: "CivicDesk",
+  description: "CivicDesk is a platform for civic engagement.",
 };
 
 export default function RootLayout({

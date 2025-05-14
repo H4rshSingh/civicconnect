@@ -13,8 +13,10 @@ async function Page({ params }: { params: { id: string } }) {
     if (!userInfo?.isAdmin) redirect("/");
 
     // const issue = await fetchIssueById(params.id);
+    console.log("params", params.id);
     try {
         const transferIssuePhase = await updateIssuePhase(params.id);
+        console.log(transferIssuePhase);
         redirect('/');  
     } catch (error) {
         redirect('/');  
