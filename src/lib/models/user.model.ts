@@ -58,13 +58,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: ['municipal', 'district', 'state', 'national'],
     },
-
+    department: {
+        type: String,
+    },
     issuesHavetoResolve: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Issue"
     }],
 
-    
+
     notification: [
         {
             text: {

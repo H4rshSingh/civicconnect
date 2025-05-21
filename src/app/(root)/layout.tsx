@@ -45,7 +45,7 @@ export default function RootLayout({
               </section>
               <RightSidebar />
             </main>
-
+          
             <Bottombar />
           </ThemeProvider>
         </body>

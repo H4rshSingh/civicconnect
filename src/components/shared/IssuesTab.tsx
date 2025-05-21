@@ -90,6 +90,7 @@ if(accountType === "Community" ) {
             location={issue.location.toString()}
             voteCount={issue.voteCount}
             resolvedDate={issue.resolutionDate}
+            department={issue.department}
             comments={issue.comments}
             commentCount={issue.comments.length}
             isComment={false}

@@ -54,6 +54,7 @@ async function Home({
                 commentCount={issue.comments.length}
                 image = {issue.image}
                 isComment={false}
+                department={issue.department}
               />
             ))}
           </>

@@ -20,6 +20,7 @@ const Page = async ({
     if (!userInfo?.onboarded) redirect("/onboarding");
 
     const result = await adminFetchIssue(userInfo?._id);
+    console.log({result})
 
     return (
         <>
@@ -50,6 +51,7 @@ const Page = async ({
                 isComment={false}
                 isAdmin = {userInfo?.isAdmin}
                 adminType={userInfo?.adminType}
+                department={issue.department}
               />
             ))}
           </>

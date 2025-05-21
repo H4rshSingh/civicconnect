@@ -9,6 +9,11 @@ const issueSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    department: {
+        type: String,
+        default: 'Unified Civic Support (All Issues)',
+        required: true,
+    },
     location: {
         type: String,
         required: true
@@ -16,7 +21,7 @@ const issueSchema = new mongoose.Schema({
     image: String,
     phase: {
         type: String,
-        enum: [ 'municipal', 'district', 'state', 'national', 'resolved'],
+        enum: ['municipal', 'district', 'state', 'national', 'resolved'],
         default: 'municipal'
     },
 
@@ -41,16 +46,16 @@ const issueSchema = new mongoose.Schema({
     comments: [
         {
             text: {
-              type: String,
-              required: true
+                type: String,
+                required: true
             },
             user: {
-              type: mongoose.Schema.Types.ObjectId,
-              ref: 'User'
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User'
             },
             createdAt: {
-              type: Date,
-              default: Date.now
+                type: Date,
+                default: Date.now
             }
         }
     ],
@@ -58,12 +63,9 @@ const issueSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-
-
-
 });
 
-const Issue =   mongoose.models.Issue || mongoose.model("Issue", issueSchema);
+const Issue = mongoose.models.Issue || mongoose.model("Issue", issueSchema);
 
 export default Issue;
 

@@ -45,6 +45,7 @@ interface Props {
   isAdmin?: boolean;
   adminType?: string;
   userInfo?: any;
+  department?: string;
 }
 
 function IssueCard({
@@ -64,12 +65,13 @@ function IssueCard({
   commentCount,
   image,
   isAdmin,
+  department,
   adminType,
   userInfo
 }: Props) {
   // const router = useRouter();
   // const handlePhaseChange = async() => {
-
+  console.log("harsh", department)
   // }
   let phasevalue;
   if (phase === 'municipal') {
@@ -151,6 +153,11 @@ function IssueCard({
                   </Link>
                 </div>
                 <div className="mt-4 flex  items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    {/* <p className='text-small-regular text-light-1'>Concerned Department : </p> */}
+                    <p className='text-small-regular text-green-400'>{department}</p>
+                  </div>
+
                   <div className="flex items-center gap-4 md:flex-row">
                     <p className="text-small-regular text-light-1 ">Progress Level : </p>
                     <div className="flex flex-col justify-center items-center gap-2">

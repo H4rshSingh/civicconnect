@@ -5,7 +5,6 @@ import Link from 'next/link'
 import React from 'react'
 
 const Topbar = () => {
-
     return (
         <nav className="topbar">
             <Link href='/' className='flex items-center gap-4'>
@@ -14,6 +13,18 @@ const Topbar = () => {
             </Link>
 
             <div className='flex items-center gap-4'>
+                {/* chatbot */}
+                <div className='hidden md:block'>
+                    <Link href='http://localhost:3001/' className='flex items-center gap-2 border-b-2 border-transparent hover:border-light-1 transition-all duration-200'>
+                        <Image
+                            src='/assets/chatbot.png'
+                            alt='chatbot'
+                            width={24}
+                            height={24}
+                        />
+                        <span className='text-heading5-medium   text-light-1'>QueryAi</span>
+                    </Link>
+                </div>
                 <div className='block md:hidden'>
                     <SignedIn>
                         <SignOutButton>

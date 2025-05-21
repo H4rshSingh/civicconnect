@@ -13,6 +13,7 @@ interface Params {
     image: string;
     communityId: string | null;
     path: string;
+    department: string | undefined;
 }
 
 export async function createIssue({
@@ -22,7 +23,8 @@ export async function createIssue({
     image,
     reporterId,
     communityId,
-    path
+    path,
+    department
 }: Params) {
     connectToDB();
 
@@ -31,15 +33,19 @@ export async function createIssue({
             { id: communityId },
             { _id: 1 }
         )
+        
+        console.log("harsh ", department)
         const createdIssue = await Issue.create({
             title,
             description,
             location,
             image,
+            department, 
             reporter: reporterId,
             community: communityIdObject
         });
 
+        console.log('createdIssue', createdIssue)
 
         await User.findByIdAndUpdate(reporterId, {
             $push: { issues: createdIssue._id, notification: { text: `You reported an issue!`, issueId: createdIssue._id } },

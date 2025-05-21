@@ -29,6 +29,11 @@ export const sidebarLinks = [
     route: "/profile",
     label: "Profile",
   },
+  {
+    imgURL: "/assets/chatbot.png",
+    route: "http://localhost:3001/",
+    label: "Chatbot",
+  }
 ];
 
 

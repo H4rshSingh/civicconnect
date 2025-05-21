@@ -6,6 +6,7 @@ export const IssueValidation = z.object({
     location: z.string().min(3, {message : 'Minimum 3 Characters'}).max(500).trim(),
     image : z.string().optional(),
     reporterId: z.string(),
+    department: z.string().optional(),
 });
 
 export const CommentValidation = z.object({
